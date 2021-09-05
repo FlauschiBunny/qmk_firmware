@@ -33,7 +33,7 @@ OPT_DEFS = -Wno-unused-function -fdump-rtl-dfinish -fstack-usage
 CUSTOM_MATRIX = yes
 NKRO_ENABLE = no
 MOUSEKEY_ENABLE = yes
-TAP_DANCE_ENABLE = yes
+TAP_DANCE_ENABLE = no
 EXTRAKEY_ENABLE = yes
 KEY_LOCK_ENABLE = no
 
