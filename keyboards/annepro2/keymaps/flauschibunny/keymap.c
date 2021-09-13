@@ -170,7 +170,6 @@ void keyboard_post_init_user(void) {
 
 layer_state_t layer_state_set_user(layer_state_t layer) {
   switch(get_highest_layer(layer)) {
-  switch(get_highest_layer(layer)) {
     case _FN1_LAYER:
       // Set the leds to yellow
       annepro2LedSetForegroundColor(0xFF, 0xFF, 0x00);
