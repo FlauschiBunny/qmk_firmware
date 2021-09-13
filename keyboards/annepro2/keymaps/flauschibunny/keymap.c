@@ -52,27 +52,27 @@ enum anne_pro_layers {
   * ,-----------------------------------------------------------------------------------------.
   * |  `  |  F1 |  F2 |  F3 |  F4 |  F5 |  F6 |  F7 |  F8 |  F9 | F10 | F11 | F12 |  DELETE   |
   * |-----------------------------------------------------------------------------------------+
-  * | Tab    |  q  | UP  |  e  |  r  |  t  |  y  |  u  |  i  |  o  | PS | HOME | END |   \    |
+  * | Tab    |PRVAPP|NXTAPP|lst_DSK|NXT_DSK|WWW_SRCH|PGUP|HOME|UP|END | INSRT|V-UP|V-DWN|MUTE |
   * |-----------------------------------------------------------------------------------------+
-  * | Esc     |LEFT |DOWN |RIGHT|  f  |  g  |  h  |  j  |  k  |  l  | PGUP|PGDN |    Enter    |
+  * |        | ALT | WIN |CTRL | SHFT |WWW_BAKC|PGDWN|LEFT|DOWN|RIGHT| MSUP|MSDWN |   Enter   |
   * |-----------------------------------------------------------------------------------------+
-  * | Shift      |V-UP |V-DWN|MUTE |  v  |  b  |  n  |  m  |  ,  |INSRT| DEL |    Shift       |
+  * | MARK_ALL|UNDO | CUT| COPY | PASTE | REDO|  DEL  |  MPRV  | MNXT |INSRT| DEL |  ShiFT    |
   * |-----------------------------------------------------------------------------------------+
-  * | Ctrl  |  L1   |  Alt  |               space             |  Alt  |  FN1  |  FN2  | Ctrl  |
+  * | Ctrl  |  L1   |  Alt  |            PLAY/PAUSE           |  AltGr  |      |       |      |
   * \-----------------------------------------------------------------------------------------/
   *
   */
  [_FN1_LAYER] = KEYMAP( /* Base */
     KC_GRV, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_DEL,
-    KC_TRNS, KC_TRNS, KC_UP, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PSCR, KC_HOME, KC_END, KC_TRNS,
-    KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PGUP, KC_PGDN, KC_TRNS,
-    KC_TRNS, KC_VOLU, KC_VOLD, KC_MUTE, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_INS, KC_DEL, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+    KC_TRNS, LSA(KC_TAB), A(KC_TAB), C(G(KC_LEFT)), C(G(KC_RGHT)), KC_WWW_SEARCH, KC_PGUP, KC_HOME, KC_UP, KC_END, KC_INS, KC_VOLU, KC_VOLD, KC_MUTE,
+    KC_TRNS, KC_LALT, KC_LGUI, KC_LCTL, KC_LSFT, KC_WWW_BACK, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_WH_U, KC_WH_D, KC_TRNS,
+    C(KC_A), C(KC_Z), C(KC_X), C(KC_C), C(KC_V), C(KC_Y), KC_DEL, KC_MPRV, KC_MNXT, KC_INS, KC_DEL, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_MPLY, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
 ),
   /*
   * Layer _FN2_LAYER
   * ,-----------------------------------------------------------------------------------------.
-  * |  ~  | BT1 | BT2 | BT3 | BT4 |  F5 |  F6 |  F7 | F8 | LEDOF|LEDON| LEDI | LEDV |  Bksp   |
+  * | USB | BT1 | BT2 | BT3 | BT4 |BTDEL|  F6 |  F7 | F8 | LEDOF|LEDON| LEDI | LEDV | bspc    |
   * |-----------------------------------------------------------------------------------------+
   * | Tab    |  q  | UP  |  e  |  r  |  t  |  y  |  u  |  i  |  o  | PS | HOME | END |   \    |
   * |-----------------------------------------------------------------------------------------+
@@ -85,8 +85,8 @@ enum anne_pro_layers {
   *
   */
  [_FN2_LAYER] = KEYMAP( /* Base */
-    KC_TRNS, KC_AP2_BT1, KC_AP2_BT2, KC_AP2_BT3, KC_AP2_BT4, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_AP_LED_OFF, KC_AP_LED_ON, KC_AP_LED_NEXT_INTENSITY, KC_AP_LED_SPEED,  KC_TRNS,
-    MO(_FN2_LAYER), KC_TRNS, KC_UP, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PSCR, KC_HOME, KC_END, KC_TRNS,
+    KC_AP2_USB, KC_AP2_BT1, KC_AP2_BT2, KC_AP2_BT3, KC_AP2_BT4, KC_AP2_BT_UNPAIR, KC_TRNS, KC_TRNS, KC_TRNS, KC_AP_LED_OFF, KC_AP_LED_ON, KC_AP_LED_NEXT_INTENSITY, KC_AP_LED_SPEED,  KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_UP, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PSCR, KC_HOME, KC_END, KC_TRNS,
     KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PGUP, KC_PGDN, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_INS, KC_DEL, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
@@ -165,26 +165,27 @@ void keyboard_post_init_user(void) {
     //9: Animated Red Vertical Wave
     //10: Animated Spectrum
     //11: Reactive Fade
-    annepro2LedSetProfile(11);
+    annepro2LedSetProfile(12);
 }
 
 layer_state_t layer_state_set_user(layer_state_t layer) {
   switch(get_highest_layer(layer)) {
+  switch(get_highest_layer(layer)) {
     case _FN1_LAYER:
-      // Set the leds to green
-      annepro2LedSetForegroundColor(0x00, 0xFF, 0x00);
+      // Set the leds to yellow
+      annepro2LedSetForegroundColor(0xFF, 0xFF, 0x00);
       break;
     case _FN2_LAYER:
-      // Set the leds to blue
-      annepro2LedSetForegroundColor(0x00, 0x00, 0xFF);
+      // Set the leds to violet
+      annepro2LedSetForegroundColor(0x88, 0x00, 0xFF);
       break;
     case _FN3_LAYER:
-      // Set the leds to red
-      annepro2LedSetForegroundColor(0xFF, 0x00, 0x00);
+      // Set the leds to cyan
+      annepro2LedSetForegroundColor(0x3F, 0x88, 0x8f);
       break;
     case _FN4_LAYER:
       // Set the leds to yellow
-      annepro2LedSetForegroundColor(0xFF, 0xFF, 0x00);
+      annepro2LedSetForegroundColor(0xFF, 0xC0, 0xCB);
       break;
     default:
       // Reset back to the current profile
@@ -218,7 +219,7 @@ bool led_update_user(led_t leds) {
           .p.blue = 0x00,
           .p.alpha = 0x00
       };
-      annepro2LedMaskSetKey(2, 0, color);
+      annepro2LedMaskSetKey(2, 0, color); // row#, col#, color... so kann die Farb-Einstellung nur für spezielle Tasten gelten
     }
   }
 
