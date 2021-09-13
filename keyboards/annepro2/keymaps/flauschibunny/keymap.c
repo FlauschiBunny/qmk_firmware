@@ -50,7 +50,7 @@ enum anne_pro_layers {
   /*
   * Layer _FN1_LAYER
   * ,-----------------------------------------------------------------------------------------.
-  * |  `  |  F1 |  F2 |  F3 |  F4 |  F5 |  F6 |  F7 |  F8 |  F9 | F10 | F11 | F12 |  DELETE   |
+  * |  `  |  F1 |  F2 |  F3 |  F4 |  F5 |  F6 |  F7 |  F8 |  F9 | F10 | F11 | F12 |  LAYER_0  |
   * |-----------------------------------------------------------------------------------------+
   * | Tab    |PRVAPP|NXTAPP|lst_DSK|NXT_DSK|WWW_SRCH|PGUP|HOME|UP|END | INSRT|V-UP|V-DWN|MUTE |
   * |-----------------------------------------------------------------------------------------+
@@ -63,7 +63,7 @@ enum anne_pro_layers {
   *
   */
  [_FN1_LAYER] = KEYMAP( /* Base */
-    KC_GRV, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_DEL,
+    KC_GRV, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, TO(_BASE_LAYER),
     KC_TRNS, LSA(KC_TAB), A(KC_TAB), C(G(KC_LEFT)), C(G(KC_RGHT)), KC_WWW_SEARCH, KC_PGUP, KC_HOME, KC_UP, KC_END, KC_INS, KC_VOLU, KC_VOLD, KC_MUTE,
     KC_TRNS, KC_LALT, KC_LGUI, KC_LCTL, KC_LSFT, KC_WWW_BACK, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_WH_U, KC_WH_D, KC_TRNS,
     C(KC_A), C(KC_Z), C(KC_X), C(KC_C), C(KC_V), C(KC_Y), KC_DEL, KC_MPRV, KC_MNXT, KC_INS, KC_DEL, KC_TRNS,
@@ -72,7 +72,7 @@ enum anne_pro_layers {
   /*
   * Layer _FN2_LAYER
   * ,-----------------------------------------------------------------------------------------.
-  * | USB | BT1 | BT2 | BT3 | BT4 |BTDEL|  F6 |  F7 | F8 | LEDOF|LEDON| LEDI | LEDV | bspc    |
+  * | USB | BT1 | BT2 | BT3 | BT4 |BTDEL|  F6 |  F7 | F8 | LEDOF|LEDON| LEDI | LEDV | LAYER_0|
   * |-----------------------------------------------------------------------------------------+
   * | Tab    |  q  | UP  |  e  |  r  |  t  |  y  |  u  |  i  |  o  | PS | HOME | END |   \    |
   * |-----------------------------------------------------------------------------------------+
@@ -85,7 +85,7 @@ enum anne_pro_layers {
   *
   */
  [_FN2_LAYER] = KEYMAP( /* Base */
-    KC_AP2_USB, KC_AP2_BT1, KC_AP2_BT2, KC_AP2_BT3, KC_AP2_BT4, KC_AP2_BT_UNPAIR, KC_TRNS, KC_TRNS, KC_TRNS, KC_AP_LED_OFF, KC_AP_LED_ON, KC_AP_LED_NEXT_INTENSITY, KC_AP_LED_SPEED,  KC_TRNS,
+    KC_AP2_USB, KC_AP2_BT1, KC_AP2_BT2, KC_AP2_BT3, KC_AP2_BT4, KC_AP2_BT_UNPAIR, KC_TRNS, KC_TRNS, KC_TRNS, KC_AP_LED_OFF, KC_AP_LED_ON, KC_AP_LED_NEXT_INTENSITY, KC_AP_LED_SPEED, TO(_BASE_LAYER),
     KC_TRNS, KC_TRNS, KC_UP, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PSCR, KC_HOME, KC_END, KC_TRNS,
     KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PGUP, KC_PGDN, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_INS, KC_DEL, KC_TRNS,
@@ -94,7 +94,7 @@ enum anne_pro_layers {
  /*
 * Layer _FN3_LAYER
 * ,-----------------------------------------------------------------------------------------.
-* |     |     |     |     |     |     |     |     |     |     |     |     |     |           |
+* |     |     |     |     |     |     |     |     |     |     |     |     |     |  LAYER_0  |
 * |-----------------------------------------------------------------------------------------+
 * |        |     |     |     |     |     |     |     |     |     |     |     |     |        |
 * |-----------------------------------------------------------------------------------------+
@@ -106,7 +106,7 @@ enum anne_pro_layers {
 * \-----------------------------------------------------------------------------------------/
 */
 [_FN3_LAYER] = KEYMAP( /* Base */
-    KC_TRNS, KC_AP2_BT1, KC_AP2_BT2, KC_AP2_BT3, KC_AP2_BT4, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_AP_LED_OFF, KC_AP_LED_ON, KC_AP_LED_NEXT_INTENSITY, KC_AP_LED_SPEED,  KC_TRNS,
+    KC_TRNS, KC_AP2_BT1, KC_AP2_BT2, KC_AP2_BT3, KC_AP2_BT4, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_AP_LED_OFF, KC_AP_LED_ON, KC_AP_LED_NEXT_INTENSITY, KC_AP_LED_SPEED, TO(_BASE_LAYER),
     MO(_FN2_LAYER), KC_TRNS, KC_UP, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PSCR, KC_HOME, KC_END, KC_TRNS,
     KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PGUP, KC_PGDN, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_INS, KC_DEL, KC_TRNS,
@@ -180,11 +180,11 @@ layer_state_t layer_state_set_user(layer_state_t layer) {
       break;
     case _FN3_LAYER:
       // Set the leds to cyan
-      annepro2LedSetForegroundColor(0x3F, 0x88, 0x8f);
+      annepro2LedSetForegroundColor(0x00, 0xFF, 0xFF);
       break;
     case _FN4_LAYER:
       // Set the leds to yellow
-      annepro2LedSetForegroundColor(0xFF, 0xC0, 0xCB);
+      annepro2LedSetForegroundColor(0xFF, 0x00, 0xFF);
       break;
     default:
       // Reset back to the current profile
