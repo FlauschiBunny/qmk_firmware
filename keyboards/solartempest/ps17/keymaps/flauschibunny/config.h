@@ -20,13 +20,3 @@
 
 // Set 10 layers for VIA
 #define DYNAMIC_KEYMAP_LAYER_COUNT 10
-
-#undef TAPPING_TERM
-#define TAPPING_TERM 200
-//#define RETRO_TAPPING
-
-#undef TAPPING_TOGGLE
-#define TAPPING_TOGGLE 2
-
-#define MK_3_SPEED
-#define MK_MOMENTARY_ACCEL

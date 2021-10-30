@@ -6,8 +6,8 @@
 enum anne_pro_layers {
   _BASE_LAYER,
   _FN1_LAYER, // Navigation and editing
-  _FN2_LAYER, // Media control, Bluetooth, RGB and makros
-  _FN3_LAYER, // Numberpad
+  _FN2_LAYER, // Mouse, Bluetooth, RGB
+  _FN3_LAYER, // Makros
   _FN4_LAYER, // Dark Table or mouse in planning...
 };
 
@@ -56,7 +56,7 @@ enum anne_pro_layers {
   * |-----------------------------------------------------------------------------------------+
   * |        | ALT | WIN |CTRL | SHFT |WWW_BAKC|PGDWN|LEFT|DOWN|RIGHT| MSUP|MSDWN |   Enter   |
   * |-----------------------------------------------------------------------------------------+
-  * | MARK_ALL|UNDO | CUT| COPY | PASTE | REDO|  DEL  |  MPRV  | MNXT |INSRT| DEL |  ShiFT    |
+  * | MARK_ALL|UNDO | CUT| COPY | PASTE | REDO|  DEL  |  MPRV  | MNXT |PRINT| SCRLCK| ShiFT   |
   * |-----------------------------------------------------------------------------------------+
   * | Ctrl  |  L1   |  Alt  |            PLAY/PAUSE           |  AltGr  |      |       |      |
   * \-----------------------------------------------------------------------------------------/
@@ -66,7 +66,7 @@ enum anne_pro_layers {
     KC_GRV, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, TO(_BASE_LAYER),
     KC_TRNS, LSA(KC_TAB), A(KC_TAB), C(G(KC_LEFT)), C(G(KC_RGHT)), KC_WWW_SEARCH, KC_PGUP, KC_HOME, KC_UP, KC_END, KC_INS, KC_VOLU, KC_VOLD, KC_MUTE,
     KC_TRNS, KC_LALT, KC_LGUI, KC_LCTL, KC_LSFT, KC_WWW_BACK, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_WH_U, KC_WH_D, KC_TRNS,
-    C(KC_A), C(KC_Z), C(KC_X), C(KC_C), C(KC_V), C(KC_Y), KC_DEL, KC_MPRV, KC_MNXT, KC_INS, KC_DEL, KC_TRNS,
+    C(KC_A), C(KC_Z), C(KC_X), C(KC_C), C(KC_V), C(KC_Y), KC_DEL, KC_MPRV, KC_MNXT, KC_PSCREEN, KC_SCROLLLOCK, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_MPLY, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
 ),
   /*
