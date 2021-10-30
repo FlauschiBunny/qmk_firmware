@@ -83,8 +83,7 @@ uint16_t spam_interval = 1000; // (1000ms == 1s)
 
 
 enum layer_names {
-    _LAYER_NUMPAD, //Numpad and base layer
-    _LAYER_SELECT, //Layer selection
+    _LAYER_NUMPAD,
     _LAYER_BROWSER,
     _LAYER_VS_CODE,
     _LAYER_MEDIA,
@@ -93,7 +92,8 @@ enum layer_names {
     _LAYER_F_KEYS,
     _LAYER_OFFICE,
     _LAYER_WINDOWS,
-    _LAYER_FREE1
+    _LAYER_FREE1,
+    _LAYER_SELECT //Layer selection, must be highest layer
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -102,31 +102,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_NUMLOCK, KC_KP_SLASH, KC_KP_ASTERISK, KC_KP_MINUS,
         KC_KP_7, KC_KP_8, KC_KP_9, KC_KP_PLUS,
         KC_KP_4, KC_KP_5, KC_KP_6,
-        KC_KP_1, KC_KP_2, KC_KP_3, LM(_LAYER_SELECT, KC_KP_ENTER),
+        KC_KP_1, KC_KP_2, KC_KP_3, MO(_LAYER_SELECT),
         KC_KP_0,          KC_KP_DOT
-    ),
-    [_LAYER_SELECT] = LAYOUT(
-		KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        TO(_LAYER_OFFICE), TO(_LAYER_WINDOWS), TO(_LAYER_FREE1), KC_TRNS,
-        TO(_LAYER_MOUSE), TO(_LAYER_CURSOR), TO(_LAYER_F_KEYS),
-        TO(_LAYER_BROWSER), TO(_LAYER_VS_CODE), TO(_LAYER_MEDIA), LM(_LAYER_SELECT, KC_KP_ENTER),
-        TO(_LAYER_NUMPAD),          RESET
     ),
     [_LAYER_BROWSER] = LAYOUT(
 		C(S(KC_TAB)), C(KC_T), C(KC_TAB),
         ATABF, LWIN(KC_TAB), ATABR, LALT(KC_F4),
         KC_WWW_HOME, KC_F11, KC_WWW_FAVORITES, KC_WWW_REFRESH,
         KC_WWW_BACK, KC_WWW_SEARCH, KC_WWW_FORWARD,
-        C(KC_F), C(KC_E), C(KC_L), LM(_LAYER_SELECT, KC_KP_ENTER),
-        C(KC_P),          KC_TRNS
+        C(KC_F), C(KC_E), C(KC_L), MO(_LAYER_SELECT),
+        C(S(KC_P)),          KC_TRNS
     ),
     [_LAYER_VS_CODE] = LAYOUT(
 		ATABF, LWIN(KC_TAB), ATABR,
         KC_F5, KC_F10, KC_F11, KC_F9, //Start debug, step over, step into, toggle breakpoint
         KC_F12, LALT(KC_F12), C(KC_BSLASH), C(KC_N), // open definition, peek definition, split editor, new file
         C(S(KC_TAB)), C(S(KC_P)), C(KC_TAB), //prev editor, open command panel, next editor
-        C(KC_H), KC_F3, S(KC_F3), LM(_LAYER_SELECT, KC_KP_ENTER), //search/replace, find next, find prev
+        C(KC_H), KC_F3, S(KC_F3), MO(_LAYER_SELECT), //search/replace, find next, find prev
         C(KC_E),          S(KC_F12) //search file, show references
     ),
     [_LAYER_MEDIA] = LAYOUT(
@@ -134,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ATABF, LWIN(KC_TAB), ATABR, LALT(KC_F4),
         KC_MEDIA_REWIND, KC_MEDIA_STOP, KC_MEDIA_FAST_FORWARD, KC_WWW_SEARCH,
         KC_MEDIA_PREV_TRACK, KC_MEDIA_PLAY_PAUSE, KC_MEDIA_NEXT_TRACK,
-        C(S(KC_TAB)), KC_MEDIA_EJECT, C(KC_TAB), LM(_LAYER_SELECT, KC_KP_ENTER),
+        C(S(KC_TAB)), KC_MEDIA_EJECT, C(KC_TAB), MO(_LAYER_SELECT),
         C(S(KC_M)),          KC_TRNS
     ),
     [_LAYER_MOUSE] = LAYOUT(
@@ -142,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ATABF, LWIN(KC_TAB), ATABR, LALT(KC_F4),
         KC_MS_BTN4, KC_MS_UP, KC_MS_BTN5, KC_MS_BTN2,
         KC_MS_LEFT, KC_MS_DOWN, KC_MS_RIGHT,
-        KC_MS_ACCEL0, KC_MS_ACCEL1, KC_MS_ACCEL2, LM(_LAYER_SELECT, KC_KP_ENTER),
+        KC_MS_ACCEL0, KC_MS_ACCEL1, KC_MS_ACCEL2, MO(_LAYER_SELECT),
         KC_MS_BTN1,          KC_TRNS
     ),
     [_LAYER_CURSOR] = LAYOUT(
@@ -150,7 +142,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_UNDO, KC_CUT, KC_COPY, KC_PASTE,
         KC_HOME, KC_UP, KC_END, KC_LCTRL,
         KC_LEFT, KC_DOWN, KC_RIGHT,
-        KC_DEL, KC_SPACE, KC_BSPACE, LM(_LAYER_SELECT, KC_KP_ENTER),
+        KC_DEL, KC_SPACE, KC_BSPACE, MO(_LAYER_SELECT),
         KC_LSHIFT,          KC_LALT
     ),
     [_LAYER_F_KEYS] = LAYOUT(
@@ -158,7 +150,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_F1, KC_F1, KC_F1, KC_PSCREEN,
         KC_F1, KC_F1, KC_F1, KC_SCROLLLOCK,
         KC_F1, KC_F1, KC_F1,
-        KC_F1, KC_F1, KC_F1, LM(_LAYER_SELECT, KC_KP_ENTER),
+        KC_F1, KC_F1, KC_F1, MO(_LAYER_SELECT),
         KC_ESCAPE,          KC_PAUSE
     ),
     [_LAYER_OFFICE] = LAYOUT(
@@ -166,7 +158,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         C(KC_1),  C(KC_2),  C(KC_3),  C(KC_4), //Switch messages, calendar, contacts, tasks
         C(KC_E), LALT(S(KC_UP)), C(KC_K), C(S(KC_U)), //search, move element up, new link, start Teams video call
         LALT(S(KC_LEFT)), LALT(S(KC_DOWN)), LALT(S(KC_RIGHT)), //indent left, move element down, indent right
-        LWIN(KC_DOT), C(KC_EQUAL), C(KC_MINUS), LM(_LAYER_SELECT, KC_KP_ENTER), //Emoji menu, zoom out, zoom in
+        LWIN(KC_DOT), C(KC_EQUAL), C(KC_MINUS), MO(_LAYER_SELECT), //Emoji menu, zoom out, zoom in
         C(S(KC_M)),          C(S(KC_K)) // mute/new message, raise hand in Teams
     ),
     [_LAYER_WINDOWS] = LAYOUT(
@@ -174,7 +166,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         C(LWIN(KC_LEFT)), LWIN(KC_D), C(LWIN(KC_RIGHT)), LALT(KC_F4),
         LALT(S(KC_TAB)), LWIN(KC_UP), LALT(KC_TAB), KC_TRNS,
         LWIN(KC_LEFT), LWIN(KC_DOWN), LWIN(KC_RIGHT),
-        LWIN(KC_E), KC_CALC, LWIN(KC_L), LM(_LAYER_SELECT, KC_KP_ENTER),
+        LWIN(KC_E), KC_CALC, LWIN(KC_L), MO(_LAYER_SELECT),
         KC_LWIN,          KC_MY_COMPUTER
     ),
     [_LAYER_FREE1] = LAYOUT(
@@ -182,8 +174,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, LM(_LAYER_SELECT, KC_KP_ENTER),
+        KC_TRNS, KC_TRNS, KC_TRNS, MO(_LAYER_SELECT),
         KC_TRNS,          KC_TRNS
+    ),
+    [_LAYER_SELECT] = LAYOUT(
+		KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        TO(_LAYER_OFFICE), TO(_LAYER_WINDOWS), TO(_LAYER_FREE1), KC_TRNS,
+        TO(_LAYER_MOUSE), TO(_LAYER_CURSOR), TO(_LAYER_F_KEYS),
+        TO(_LAYER_BROWSER), TO(_LAYER_VS_CODE), TO(_LAYER_MEDIA), MO(_LAYER_SELECT),
+        TO(_LAYER_NUMPAD),          RESET
     )
 };
 
@@ -275,17 +275,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 
 // RGB Layer Light Settings - Note that this will fix the key switch LED colour and brightness
-const rgblight_segment_t PROGMEM my_layer0_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, 0, 95,255,90}); //Spring green		(Code is extra for static key lighting of layers)
-const rgblight_segment_t PROGMEM my_layer1_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, 0, 5,255,120}); //Yellow-orange	(Code is extra for static key lighting of layers)
-const rgblight_segment_t PROGMEM my_layer2_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, 0, 128,255,100}); //Cyan			(Code is extra for static key lighting of layers)
-const rgblight_segment_t PROGMEM my_layer3_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, 0, 215,255,120}); //Magenta		(Code is extra for static key lighting of layers)
-const rgblight_segment_t PROGMEM my_layer4_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, 0, 15,255,120}); //Orange-red		(Code is extra for static key lighting of layers)
+const rgblight_segment_t PROGMEM my_layer0_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, 0, 95,255,90}); //Spring green     (Code is extra for static key lighting of layers)
+const rgblight_segment_t PROGMEM my_layer1_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, 0, 255,69,0}); //Orange-red    	(Code is extra for static key lighting of layers)
+const rgblight_segment_t PROGMEM my_layer2_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, 0, 100,149,237}); //Cornflower	    (Code is extra for static key lighting of layers)
+const rgblight_segment_t PROGMEM my_layer3_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, 0, 50,205,50}); //	Lime Green   	(Code is extra for static key lighting of layers)
+const rgblight_segment_t PROGMEM my_layer4_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, 0, 255,215,0}); //Gold            	(Code is extra for static key lighting of layers)
+const rgblight_segment_t PROGMEM my_layer5_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, 0, 0,0,139}); //Dark blue  		(Code is extra for static key lighting of layers)
+const rgblight_segment_t PROGMEM my_layer6_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, 0, 75,0,130}); //Indigo    		(Code is extra for static key lighting of layers)
+const rgblight_segment_t PROGMEM my_layer7_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, 0, 186,85,211}); //Medium orchid	(Code is extra for static key lighting of layers)
+const rgblight_segment_t PROGMEM my_layer8_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, 0, 0,100,0}); //Dark green     	(Code is extra for static key lighting of layers)
+const rgblight_segment_t PROGMEM my_layer9_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, 0, 210,105,30}); //Chocolate		(Code is extra for static key lighting of layers)
+const rgblight_segment_t PROGMEM my_layer10_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, 0, 255,255,255}); //White		(Code is extra for static key lighting of layers)
 const rgblight_segment_t *const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST( //Lighting layers
     my_layer0_layer,
     my_layer1_layer,
     my_layer2_layer,
     my_layer3_layer,
-    my_layer4_layer
+    my_layer4_layer,
+    my_layer5_layer,
+    my_layer6_layer,
+    my_layer7_layer,
+    my_layer8_layer,
+    my_layer9_layer,
+    my_layer10_layer
 );
 
 
@@ -313,6 +325,12 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(2, layer_state_cmp(state, 2));
     rgblight_set_layer_state(3, layer_state_cmp(state, 3));
     rgblight_set_layer_state(4, layer_state_cmp(state, 4));
+	rgblight_set_layer_state(5, layer_state_cmp(state, 5));
+    rgblight_set_layer_state(6, layer_state_cmp(state, 6));
+    rgblight_set_layer_state(7, layer_state_cmp(state, 7));
+    rgblight_set_layer_state(8, layer_state_cmp(state, 8));
+    rgblight_set_layer_state(9, layer_state_cmp(state, 9));
+    rgblight_set_layer_state(10, layer_state_cmp(state, 10));
 
 	/*static uint16_t underglow_brightness = 140; //This code can be used to have edge and underglow LEDs selectively brighter
 	static uint16_t perkey_brightness = 80;
