@@ -229,8 +229,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 			register_code(KC_LSHIFT);
 			register_code(KC_TAB);
 		  } else {
-			unregister_code(KC_LSHIFT);
 			unregister_code(KC_TAB);
+            unregister_code(KC_LSHIFT);
 		  }
 		  return true;
 
@@ -332,21 +332,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(9, layer_state_cmp(state, 9));
     rgblight_set_layer_state(10, layer_state_cmp(state, 10));
 
-	/*static uint16_t underglow_brightness = 140; //This code can be used to have edge and underglow LEDs selectively brighter
-	static uint16_t perkey_brightness = 80;
-	static uint16_t lastrow_brightness = 50; //for less shine-through at case edges (brighter is okay for FR4 plate)
-	static uint16_t current_hue = 0; //hue calculated to be used
-	static uint16_t layer0_huestart = 56; //hue gradient starting colour - green/blue
-	static uint16_t layer0_hueincrement = 2; //hue gradient colour increment
-	static uint16_t layer1_huestart = 15; //hue gradient starting colour - orange/green
-	static uint16_t layer1_hueincrement = 2; //hue gradient colour increment
-	static uint16_t layer2_huestart = 220; //hue gradient starting colour - magenta/orange (this layer is for photoshop)
-	static uint16_t layer2_hueincrement = 2; //hue gradient colour increment
-	static uint16_t layer3_huestart = 135; //hue gradient starting colour - blue/purple
-	static uint16_t layer3_hueincrement = 2; //hue gradient colour increment
-	static uint16_t layer4_huestart = 30; //hue gradient starting colour - orange/red
-	static uint16_t layer4_hueincrement = 1; //hue gradient colour increment
-	*/
 	// This is what the LED layout is.
 	// 1,                 0,
 	// 3,                 2,
@@ -358,84 +343,37 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 	switch(biton32(state)){ // Change all other LEDs based on layer state as well
 		case 0:
-			rgblight_sethsv_noeeprom(50,255,100);
-			/*for (uint8_t i = 0; i < RGBLED_NUM; i++){ //This code can be used to have edge and underglow LEDs selectively brighter
-				current_hue=i*layer0_hueincrement+layer0_huestart; //Determine the calculated hue
-				if(current_hue>255){current_hue=current_hue-255;}; //Roll over max hue of 256
-				if (i == 1 || i == 3 || i == 9 || i == 18 || i == 25 || i == 27) {
-				  rgblight_sethsv_at(current_hue,255,underglow_brightness,i);
-				} else if (i == 0 || i == 2 || i == 4 || i == 14 || i == 23) { //make right side of the numpad underglow darker
-				  rgblight_sethsv_at(current_hue,255,lastrow_brightness,i);
-				} else if (i == 26 || i == 24 || i == 19 || i ==10) { //make per key end LEDs lighter to reduce glare
-				  rgblight_sethsv_at(current_hue,255,lastrow_brightness,i);
-				} else {
-				  rgblight_sethsv_at(current_hue,255,perkey_brightness,i);
-				};
-			};*/
+			rgblight_sethsv_noeeprom(HSV_RED);
 			break;
 		case 1:
-			rgblight_sethsv_noeeprom(5,255,100);
-			/*for (uint8_t i = 0; i < RGBLED_NUM; i++){ //This code can be used to have edge and underglow LEDs selectively brighter
-				current_hue=i*layer1_hueincrement+layer1_huestart; //Determine the calculated hue
-				if(current_hue>255){current_hue=current_hue-255;}; //Roll over max hue of 256
-				if (i == 1 || i == 3 || i == 9 || i == 18 || i == 25 || i == 27) {
-				  rgblight_sethsv_at(current_hue,255,underglow_brightness,i);
-				} else if (i == 0 || i == 2 || i == 4 || i == 14 || i == 23) { //make right side of the numpad underglow darker
-				  rgblight_sethsv_at(current_hue,255,lastrow_brightness,i);
-				} else if (i == 26 || i == 24 || i == 19 || i ==10) { //make per key end LEDs lighter to reduce glare
-				  rgblight_sethsv_at(current_hue,255,lastrow_brightness,i);
-				} else {
-				  rgblight_sethsv_at(current_hue,255,perkey_brightness,i);
-				};
-			};*/
+			rgblight_sethsv_noeeprom(HSV_ORANGE);
 			break;
 		case 2:
-			rgblight_sethsv_noeeprom(128,255,100);
-			/*for (uint8_t i = 0; i < RGBLED_NUM; i++){ //This code can be used to have edge and underglow LEDs selectively brighter
-				current_hue=i*layer2_hueincrement+layer2_huestart; //Determine the calculated hue
-				if(current_hue>255){current_hue=current_hue-255;}; //Roll over max hue of 256
-				if (i == 1 || i == 3 || i == 9 || i == 18 || i == 25 || i == 27) {
-				  rgblight_sethsv_at(current_hue,255,underglow_brightness,i);
-				} else if (i == 0 || i == 2 || i == 4 || i == 14 || i == 23) { //make right side of the numpad underglow darker
-				  rgblight_sethsv_at(current_hue,255,lastrow_brightness,i);
-				} else if (i == 26 || i == 24 || i == 19 || i ==10) { //make per key end LEDs lighter to reduce glare
-				  rgblight_sethsv_at(current_hue,255,lastrow_brightness,i);
-				} else {
-				  rgblight_sethsv_at(current_hue,255,perkey_brightness,i);
-				};
-			};*/
+			rgblight_sethsv_noeeprom(HSV_AZURE);
 			break;
 		case 3:
-			rgblight_sethsv_noeeprom(215,255,100);
-			/*for (uint8_t i = 0; i < RGBLED_NUM; i++){ //This code can be used to have edge and underglow LEDs selectively brighter
-				current_hue=i*layer3_hueincrement+layer3_huestart; //Determine the calculated hue
-				if(current_hue>255){current_hue=current_hue-255;}; //Roll over max hue of 256
-				if (i == 1 || i == 3 || i == 9 || i == 18 || i == 25 || i == 27) {
-				  rgblight_sethsv_at(current_hue,255,underglow_brightness,i);
-				} else if (i == 0 || i == 2 || i == 4 || i == 14 || i == 23) { //make right side of the numpad underglow darker
-				  rgblight_sethsv_at(current_hue,255,lastrow_brightness,i);
-				} else if (i == 26 || i == 24 || i == 19 || i ==10) { //make per key end LEDs lighter to reduce glare
-				  rgblight_sethsv_at(current_hue,255,lastrow_brightness,i);
-				} else {
-				  rgblight_sethsv_at(current_hue,255,perkey_brightness,i);
-				};
-			};*/
+			rgblight_sethsv_noeeprom(HSV_SPRINGGREEN);
 			break;
 		case 4:
-			rgblight_sethsv_noeeprom(15,255,100);
-			/*for (uint8_t i = 0; i < RGBLED_NUM; i++){ //This code can be used to have edge and underglow LEDs selectively brighter
-				current_hue=i*layer4_hueincrement+layer4_huestart; //Determine the calculated hue
-				if(current_hue>255){current_hue=current_hue-255;}; //Roll over max hue of 256
-				if (i == 1 || i == 3 || i == 9 || i == 18 || i == 25 || i == 27) {
-				  rgblight_sethsv_at(current_hue,255,underglow_brightness,i);
-				} else if (i == 0 || i == 2 || i == 4 || i == 14 || i == 23) { //make right side of the numpad underglow darker
-				  rgblight_sethsv_at(current_hue,255,lastrow_brightness,i);
-				} else if (i == 26 || i == 24 || i == 19 || i ==10) { //make per key end LEDs lighter to reduce glare
-				  rgblight_sethsv_at(current_hue,255,lastrow_brightness,i);
-				} else {
-				  rgblight_sethsv_at(current_hue,255,perkey_brightness,i);
-				};
-			};*/
+			rgblight_sethsv_noeeprom(HSV_GOLD);
+			break;
+		case 5:
+			rgblight_sethsv_noeeprom(HSV_TURQUOISE);
+			break;
+		case 6:
+			rgblight_sethsv_noeeprom(HSV_CHARTREUSE);
+			break;
+		case 7:
+			rgblight_sethsv_noeeprom(HSV_PURPLE);
+			break;
+		case 8:
+			rgblight_sethsv_noeeprom(HSV_BLUE);
+			break;
+		case 9:
+			rgblight_sethsv_noeeprom(HSV_YELLOW);
+			break;
+		case 10:
+			rgblight_sethsv_noeeprom(HSV_WHITE);
 			break;
 	  }
     return state;

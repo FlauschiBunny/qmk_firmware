@@ -19,12 +19,12 @@
 #include "ps17.h"
 
 bool encoder_update_user(uint8_t index, bool clockwise) { // QMK encoder functionality
-  #ifdef VIA_ENABLE //Add in VIA setting of rotary encoder keymap
+  //#ifdef VIA_ENABLE //Add in VIA setting of rotary encoder keymap
 	    if (index == 0) { // First encoder
 		if (clockwise) {
 			action_exec((keyevent_t){.key = (keypos_t){.row = 0, .col = 0}, .pressed = true, .time = (timer_read() | 1)  });  //Time is 1 tick otherwise empty event
 			action_exec((keyevent_t){.key = (keypos_t){.row = 0, .col = 0}, .pressed = false, .time = (timer_read() | 1)  });
-			} 
+			}
 			else {
 			action_exec((keyevent_t){.key = (keypos_t){.row = 0, .col = 2}, .pressed = true, .time = (timer_read() | 1)  });
 			action_exec((keyevent_t){.key = (keypos_t){.row = 0, .col = 2}, .pressed = false, .time = (timer_read() | 1)  });
@@ -35,7 +35,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) { // QMK encoder functio
 		} else {
 		  tap_code(dynamic_keymap_get_keycode(biton32(layer_state), 0, 2)); //Allow setting of keymap in VIA
 		}*/
-  #endif
+  //#endif
   return true;
 }
 
@@ -48,7 +48,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) { // QMK encoder functio
 		{	8,	9,	10,	NO_LED,	},
 		{	11,	12,	13,	14,	},
 		{	15,	NO_LED,	16,	NO_LED,	},
-		
+
 		//Underglow matrix to LED index
 		{	21,	NO_LED,	NO_LED,	22,	},
 		{	20,	NO_LED,	NO_LED,	23,	},
@@ -58,7 +58,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) { // QMK encoder functio
 	}, {
 	  // LED Key Index to Physical Position, calculated with Plot Digitizer and scaled PCB Image with center at {126,126}
 	  {74,165},{108,165},{144,165},{179,165},{74,129},{109,129},{143,129},{188,121},{74,95},{109,95},{143,95},{73,60},{109,60},{144,60},{188,51},{91,25},{144,25},
-	 
+
 	  // LED underglow
 	  {61,26},{61,88},{61,158},{61,197},{61,232},{192,232},{192,196},{192,158},{192,87},{183,26},{127,24}
 	}, {
